@@ -1,0 +1,32 @@
+.Item .ui-block-a {
+    width: 10% !important;
+}
+
+.Item .ui-block-b {
+    width: 90% !important;    
+}
+
+.ui-icon-Anasayfa {
+	background-image: url("lib/Icon/Menu.png");
+}
+
+.form-inline {
+  @media (min-width: @screen-sm-min) {
+    .form-group {
+      display: inline-block;
+      margin-bottom: 0;
+      vertical-align: middle;
+    }
+
+    .form-control {
+      display: inline-block;
+      width: auto; // Prevent labels from stacking above inputs in `.form-group`
+      vertical-align: middle;
+    }
+    .input-group > .form-control {
+      width: 100%;
+    }
+  }
+}
+
+

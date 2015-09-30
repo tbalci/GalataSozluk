@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,height=device-height initial-scale=1">
+    <title>Sözlük</title>
+    <link rel="stylesheet" href="JQM/css/themes/default/jquery.mobile-1.4.0-rc.1.min.css">
+    <link rel="stylesheet" href="lib/css/bootstrap.css">
+    <link rel="stylesheet" href="lib/css/bootstrap-table.min.css">
+    <link href="lib/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" href="lib/css/amaran.min.css" />
+    <link href="lib/css/select2.css" rel="stylesheet" />
+    <link rel="stylesheet" href="lib/css/app.css">
+    <script src="JQM/js/jquery.js"></script>
+    <script src="lib/js/config.js"></script>
+    <script src="lib/js/knockout.js"></script>
+    <script src="JQM/js/jquery.mobile-1.4.0-rc.1.min.js"></script>
+    <script src="lib/js/jquery.amaran.min.js"></script>
+    <script src="lib/js/bootstrap.js"></script>
+    <script src="lib/js/bootstrap-table.min.js"></script>
+    <script src="lib/js/bootstrap-table-tr-TR.min.js"></script>
+    <script src="lib/js/jquery.number.js"></script>
+    <script src="lib/js/select2.js"></script>
+    <link href="lib/css/grid.css" rel="stylesheet" />
+    <script src="lib/js/underscore.js"></script>
+    <script src="lib/js/underscore-db.js"></script>
+    <script src="lib/js/VeriTabani.js"></script>
+    <script src="lib/js/lodash.js"></script>
+    <script src="lib/js/VeriTabani.min.js"></script>
+    <script src="lib/js/App.js"></script>
+    <script src="cordova.js"></script>
+    <script src="Cordova/Js/platformOverrides.js"></script>
+    <script src="Cordova/Js/index.js"></script>
+    <style>
+        .aln {
+            position: relative;
+        }
+
+        .controlgroup-textinput {
+            padding-top: .22em;
+            padding-bottom: .22em;
+            font-size: 16px;
+            width: auto;
+        }
+
+        .controlgroup {
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+    <div data-role="page" id="Anasayfa" data-transition="slide">
+        <div data-role="header" data-position="fixed">
+            <div class="ui-grid-a left">
+                <div class="ui-block-c"><img height="65px" width="64px" data-bind="attr: {src:Uygulama.Logo}" /></div>
+                <div class="ui-block-b"><h3 data-bind="text:Uygulama.Ad"></h3></div>
+            </div>
+            <div data-role="popup" id="popupMenu" data-theme="d" style="z-index:2">
+                <ul id="dilsecim" data-role="listview" data-inset="false" data-theme="d">
+                    <li data-dil="1" data-dilicon="lib/Icon/tr.png"><a href="#"><img style="margin:2px;width:23%" src="lib/Icon/tr.png" />Türkçe</a></li>
+                    <li data-dil="2" data-dilicon="lib/Icon/en.png"><a href="#"><img style="margin:2px;width:23%" src="lib/Icon/en.png" />İngilizce</a></li>
+                    <li data-dil="3" data-dilicon="lib/Icon/fr.png"><a href="#"><img style="margin:2px;width:23%" src="lib/Icon/fr.png" />Fransızca</a></li>
+                </ul>
+            </div>
+            <div data-role="controlgroup" data-type="horizontal" data-position="fixed" style="z-index:1">
+                <a id="dilSecim" data-dilno="3" href="#popupMenu" data-rel="popup" data-role="button" class="ui-btn" data-transition="slideup" style="font-size:15px;margin-right: 5px;">
+                    <img id="imgDilIcon" style="margin:1px;height:17px;width:17px" src="lib/Icon/fr.png" />
+                </a>
+                <input type="text" data-wrapper-class="controlgroup-textinput ui-btn" style="font-size:16px;margin-left:-10px;" id="sutunTxtAra">
+                <button id="btnAra" data-wrapper-class="controlgroup-textinput ui-btn" style="font-size:15px;">Ara</button>
+            </div>
+        </div>
+        <div role="main" class="ui-content jqm-content" data-role="content">
+            <div id="pnlAramaSonuc" class=" sutun sutunPnlAramaSonuc">
+                <ul data-role="listview" data-inset="true">
+                    <li data-role="list-divider" data-theme="b"><h1><span data-bind="text:Sonuclar().length+SaSonuclar().length"></span> Sonuç Bulundu</h1></li>
+                    <li>
+                        <ul id="pnlAramaSonucListe" data-role="listview" class="ui-listview-outer" data-bind="foreach: Sonuclar">
+                            <li data-bind="visible:AppModel.Dil==1 " data-role="collapsible" data-iconpos="right" data-shadow="false" data-corners="false">
+                                <!--<span data-bind="text:$index()+1+' .'" class="ui-li-count ui-btn-corner-all aln" style="float:left"></span>-->
+                                <h2 style="font-size:large"><img style="margin:2px;width:30px" src="lib/Icon/tr.png" /><span data-bind="html:Turkce"> </span></h2>
+                                <h5><img style="margin:5px;width:24px" src="lib/Icon/fr.png" /><span data-bind="html:Fransizca"> </span> | <img style="margin:5px;width:24px" src="lib/Icon/ses.png" /><span data-bind="html:Okunus"> </span></h5>
+                                <h5><img style="margin:5px;width:24px" src="lib/Icon/en.png" /><span data-bind="html:Ingilizce"> </span></h5>
+                            </li>
+                            <li data-bind="visible:AppModel.Dil==2 " data-role="collapsible">
+                                <h2 style="font-size:large"><img style="margin:2px;width:30px" src="lib/Icon/en.png" /><span data-bind="html:Ingilizce"> </span></h2>
+                                <h5><img style="margin:5px;width:24px" src="lib/Icon/fr.png" /><span data-bind="html:Fransizca"> </span> | <img style="margin:5px;width:24px" src="lib/Icon/ses.png" /><span data-bind="html:Okunus"> </span></h5>
+                                <h5><img style="margin:5px;width:24px" src="lib/Icon/tr.png" /><span data-bind="html:Turkce"> </span></h5>
+                            </li>
+                            <li data-bind="visible:AppModel.Dil==3 " data-role="collapsible">
+                                <h2 style="font-size:large"><img style="margin:2px;width:30px" src="lib/Icon/fr.png" /><span data-bind="html:Fransizca"> </span> | <img style="margin:5px;width:24px" src="lib/Icon/ses.png" /><span data-bind="html:Okunus"> </span></h2>
+                                <h5><img style="margin:5px;width:24px" src="lib/Icon/tr.png" /><span data-bind="html:Turkce"> </span></h5>
+                                <h5><img style="margin:5px;width:24px" src="lib/Icon/en.png" /><span data-bind="html:Ingilizce"> </span></h5>
+                            </li>
+                        </ul>
+                        <ul id="pnlAramaSonucListeSa" data-role="listview" class="ui-listview-outer" data-bind="foreach: SaSonuclar">
+                            <li data-bind="visible:AppModel.Dil==1 " data-role="collapsible" data-iconpos="right" data-shadow="false" data-corners="false">
+                                <!--<span data-bind="text:$index()+1+' .'" class="ui-li-count ui-btn-corner-all aln" style="float:left"></span>-->
+                                <h2 style="font-size:large"><img style="margin:2px;width:30px" src="lib/Icon/tr.png" /><span data-bind="html:Turkce"> </span></h2>
+                                <h5><img style="margin:5px;width:24px" src="lib/Icon/fr.png" /><span data-bind="html:Fransizca"> </span> | <img style="margin:5px;width:24px" src="lib/Icon/ses.png" /><span data-bind="html:Okunus"> </span></h5>
+                                <h5><img style="margin:5px;width:24px" src="lib/Icon/en.png" /><span data-bind="html:Ingilizce"> </span></h5>
+                            </li>
+                            <li data-bind="visible:AppModel.Dil==2 " data-role="collapsible">
+                                <h2 style="font-size:large"><img style="margin:2px;width:30px" src="lib/Icon/en.png" /><span data-bind="html:Ingilizce"> </span></h2>
+                                <h5><img style="margin:5px;width:24px" src="lib/Icon/fr.png" /><span data-bind="html:Fransizca"> </span> | <img style="margin:5px;width:24px" src="lib/Icon/ses.png" /><span data-bind="html:Okunus"> </span></h5>
+                                <h5><img style="margin:5px;width:24px" src="lib/Icon/tr.png" /><span data-bind="html:Turkce"> </span></h5>
+                            </li>
+                            <li data-bind="visible:AppModel.Dil==3 " data-role="collapsible">
+                                <h2 style="font-size:large"><img style="margin:2px;width:30px" src="lib/Icon/fr.png" /><span data-bind="html:Fransizca"> </span> | <img style="margin:5px;width:24px" src="lib/Icon/ses.png" /><span data-bind="html:Okunus"> </span></h2>
+                                <h5><img style="margin:5px;width:24px" src="lib/Icon/tr.png" /><span data-bind="html:Turkce"> </span></h5>
+                                <h5><img style="margin:5px;width:24px" src="lib/Icon/en.png" /><span data-bind="html:Ingilizce"> </span></h5>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!--<div id="pnlKelimeSonuc" class=" sutun sutunpnlKelimeSonuc">
+                <ul data-role="listview" data-inset="true">
+                    <li data-role="list-divider" data-theme="b" data-bind="foreach: SecilenSonuclar">
+                            <h1 data-bind="visible:AppModel.Dil==1">
+                                <img style="margin:2px;width:16px" src="lib/Icon/tr.png" /><span data-bind="html:Turkce"> </span>
+                            </h1>
+                            <h1 data-bind="visible:AppModel.Dil==2">
+                                <img style="margin:2px;width:16px" src="lib/Icon/en.png" /><span data-bind="html:Ingilizce"> </span>
+                            </h1>
+                            <h1 data-bind="visible:AppModel.Dil==3">
+                                <img style="margin:2px;width:16px" src="lib/Icon/fr.png" /><span data-bind="html:Fransizca"> </span>
+                            </h1>
+                    </li>
+                    <li>
+                        <ul id="pnlAramaSonucListe" data-role="listview" data-inset="false" data-bind="foreach: SecilenSonuclar">
+                            <li data-bind="visible:AppModel.Dil==1 ">
+                                <h5><img style="margin:2px;width:30px" src="lib/Icon/en.png" /><span data-bind="html:Ingilizce"> </span></h5>
+                                <h5><img style="margin:2px;width:30px" src="lib/Icon/fr.png" /><span data-bind="html:Fransizca"> </span></h5>
+                            </li>
+                            <li data-bind="visible:AppModel.Dil==2 ">
+                                <h5><img style="margin:2px;width:30px" src="lib/Icon/tr.png" /><span data-bind="html:Turkce"> </span></h5>
+                                <h5><img style="margin:2px;width:30px" src="lib/Icon/fr.png" /><span data-bind="html:Fransizca"> </span></h5>
+                            </li>
+                            <li data-bind="visible:AppModel.Dil==3 ">
+                                <h5><img style="margin:2px;width:30px" src="lib/Icon/tr.png" /><span data-bind="html:Turkce"> </span></h5>
+                                <h5><img style="margin:2px;width:30px" src="lib/Icon/en.png" /><span data-bind="html:Ingilizce"> </span></h5>
+                            </li>
+                            <li data-role="list-divider" role="heading">Toplam 13</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>-->
+        </div>
+        <div data-role="footer" data-position="fixed">
+            <h1 data-bind="text:Uygulama.FooterBilgi"></h1>
+        </div>
+    </div>
+    <div data-role="page" id="MesajPenceresi" data-rel="dialog" data-close-btn="none">
+        <div data-role="header">
+            <h1><span id="Mesaj-Baslik"></span></h1>
+        </div>
+        <div role="main" class="ui-content jqm-content">
+            <span id="Mesaj-Icerik"></span>
+            <a id="Mesaj_Kapat" data-role="button">Tamam</a>
+        </div>
+        <div data-role="footer">
+            <h1><span id="Mesaj-AltBilgi"></span></h1>
+        </div>
+    </div>
+    <script>
+        var dil = 3;
+        AppModel.Dil = 3;
+        var $pnlAramaSonuc = $("#pnlAramaSonuc"),
+            $pnlKelimeSonuc = $("#pnlKelimeSonuc"),
+            $sutunTxtAra = $("#sutunTxtAra"),
+            $imgDilIcon = $('#imgDilIcon');
+        $btnAra = $("#btnAra");
+        $("#dilsecim li").on("click", function (event, ui) {
+            var PMenu = $('#popupMenu');
+            PMenu.popup("close");
+            dil = $(this).data('dil');
+            var dilIcon = $(this).data('dilicon');
+            var dilSecim = $('#dilSecim');
+            dilSecim.attr('data-no', dil);
+            $imgDilIcon.attr('src', dilIcon);
+            AppModel.Dil = dil;
+            AramaIslemiYap(false);
+        });
+
+        $('#kontrolgrup').on('click', '.ui-controlgroup-controls  .ui-input-clear', function (e) {
+            AramaIslemiYap(false);
+        });
+
+        $sutunTxtAra.keyup(function (event) {
+            if (event.which == 13) {
+                AramaIslemiYap(true);
+            }
+            //else {
+            //    var txt = $sutunTxtAra.val().trim();
+            //    if (txt.length>1) {
+            //        AramaIslemiYap(true);
+            //    }
+            //    else
+            //    {
+            //        AppModel.Sonuclar.removeAll();
+            //        AppModel.SecilenSonuclar.removeAll();
+            //    }
+            //}
+        });
+        $btnAra.on("click", function (event, ui) {
+
+            AramaIslemiYap(true);
+        });
+        AppModel.VeriTabaniniHazirla();
+        function AramaIslemiYap(MesajDurum) {
+            var txt = $sutunTxtAra.val();
+            if (txt != '') {
+                $pnlAramaSonuc.show("fast");
+                AppModel.Ara(txt);
+            }
+            else {
+                AppModel.Sonuclar.removeAll();
+                AppModel.SaSonuclar.removeAll()
+                if (MesajDurum) {
+                    AppModel.ToastMesajVer('İşlemler', 'Lütfen Bir Metin Giriniz', 'warning', 10000, true);
+                }
+
+            }
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "android": {
+    "release": {
+      "keystore": "galatasozluk.keystore",
+      "storePassword": "hayat123",
+      "alias": "galatasozluk",
+      "password": "hayat123",
+      "keystoreType": ""
+    }
+  }
+}
