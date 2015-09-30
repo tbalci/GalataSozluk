@@ -1,0 +1,2 @@
+# GalataSozluk
+Mobil Sözlük Uygulaması
