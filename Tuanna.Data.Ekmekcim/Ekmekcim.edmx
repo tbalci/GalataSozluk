@@ -1,0 +1,531 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EFEkmekcim.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TBLAltKategori">
+          <Key>
+            <PropertyRef Name="SatirNo" />
+          </Key>
+          <Property Name="SatirNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AltKategoriAd" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Kategori" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBLAnlikBakiye">
+          <Key>
+            <PropertyRef Name="SatirNo" />
+          </Key>
+          <Property Name="SatirNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UyeFirma" Type="int" Nullable="false" />
+          <Property Name="Bakiye" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="IslemTarih" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBLAnlikStok">
+          <Key>
+            <PropertyRef Name="SatirNo" />
+          </Key>
+          <Property Name="SatirNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Urun" Type="int" Nullable="false" />
+          <Property Name="Adet" Type="int" Nullable="false" />
+          <Property Name="IslemTarih" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBLFirma">
+          <Key>
+            <PropertyRef Name="SatirNo" />
+          </Key>
+          <Property Name="SatirNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirmaAd" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Adres" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sehir" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Tel" Type="nvarchar" MaxLength="14" Nullable="false" />
+          <Property Name="IslemYapan" Type="int" Nullable="false" />
+          <Property Name="IslemTarih" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBLIletisim">
+          <Key>
+            <PropertyRef Name="SatirNo" />
+          </Key>
+          <Property Name="SatirNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mesaj" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IslemTarih" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Okundu" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBLKategori">
+          <Key>
+            <PropertyRef Name="SatirNo" />
+          </Key>
+          <Property Name="SatirNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KategoriAd" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBLMahalle">
+          <Key>
+            <PropertyRef Name="SatirNo" />
+          </Key>
+          <Property Name="SatirNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sehir" Type="int" Nullable="false" />
+          <Property Name="MahalleAd" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBLOdeme">
+          <Key>
+            <PropertyRef Name="SatirNo" />
+          </Key>
+          <Property Name="SatirNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UyeFirma" Type="int" Nullable="false" />
+          <Property Name="FisNo" Type="int" Nullable="false" />
+          <Property Name="OdemeTip" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="OdemeTarih" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OdemeTutar" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="IslemTarih" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IslemYapan" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBLSehir">
+          <Key>
+            <PropertyRef Name="SatirNo" />
+          </Key>
+          <Property Name="SatirNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SehirAd" Type="nvarchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBLSiparis">
+          <Key>
+            <PropertyRef Name="SatirNo" />
+          </Key>
+          <Property Name="SatirNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Uye" Type="int" Nullable="false" />
+          <Property Name="Urun" Type="int" Nullable="false" />
+          <Property Name="Adet" Type="int" Nullable="false" />
+          <Property Name="OnaylandiMi" Type="bit" Nullable="false" />
+          <Property Name="GorulduMu" Type="bit" Nullable="false" />
+          <Property Name="Teslimat" Type="bit" Nullable="false" />
+          <Property Name="IslemTarih" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBLUrun">
+          <Key>
+            <PropertyRef Name="SatirNo" />
+          </Key>
+          <Property Name="SatirNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AltKategori" Type="int" Nullable="false" />
+          <Property Name="UrunAd" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UrunFiyat" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="AlisFiyat" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="UrunResim" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="UrunDurum" Type="bit" Nullable="false" />
+          <Property Name="IslemYapan" Type="int" Nullable="false" />
+          <Property Name="IslemTarih" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Aciklama" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TBLUrunAlim">
+          <Key>
+            <PropertyRef Name="SatirNo" />
+          </Key>
+          <Property Name="SatirNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FisNo" Type="int" Nullable="false" />
+          <Property Name="Firma" Type="int" Nullable="false" />
+          <Property Name="Tarih" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Saat" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="OdemeTip" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="AlinanUrun" Type="int" Nullable="false" />
+          <Property Name="AlinanMiktar" Type="int" Nullable="false" />
+          <Property Name="AFiyat" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="NetTutar" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="IslemTarih" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IslemYapan" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBLUye">
+          <Key>
+            <PropertyRef Name="SatirNo" />
+          </Key>
+          <Property Name="SatirNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdSoyad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cinsiyet" Type="bit" Nullable="false" />
+          <Property Name="Cep" Type="nchar" MaxLength="11" Nullable="false" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mahalle" Type="int" Nullable="false" />
+          <Property Name="Cadde" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ApartmanNo" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ApartmanAd" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DaireNo" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="OnayDurum" Type="bit" Nullable="false" />
+          <Property Name="UyeDurum" Type="bit" Nullable="false" />
+          <Property Name="IslemTarih" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="EFEkmekcimStoreContainer">
+          <EntitySet Name="TBLAltKategori" EntityType="Self.TBLAltKategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLAnlikBakiye" EntityType="Self.TBLAnlikBakiye" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLAnlikStok" EntityType="Self.TBLAnlikStok" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLFirma" EntityType="Self.TBLFirma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLIletisim" EntityType="Self.TBLIletisim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLKategori" EntityType="Self.TBLKategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLMahalle" EntityType="Self.TBLMahalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLOdeme" EntityType="Self.TBLOdeme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLSehir" EntityType="Self.TBLSehir" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLSiparis" EntityType="Self.TBLSiparis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLUrun" EntityType="Self.TBLUrun" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLUrunAlim" EntityType="Self.TBLUrunAlim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLUye" EntityType="Self.TBLUye" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EFEkmekcim" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TBLAltKategori">
+          <Key>
+            <PropertyRef Name="SatirNo" />
+          </Key>
+          <Property Name="SatirNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AltKategoriAd" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Kategori" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBLKategori">
+          <Key>
+            <PropertyRef Name="SatirNo" />
+          </Key>
+          <Property Name="SatirNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KategoriAd" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBLSiparis">
+          <Key>
+            <PropertyRef Name="SatirNo" />
+          </Key>
+          <Property Name="SatirNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Uye" Type="Int32" Nullable="false" />
+          <Property Name="Urun" Type="Int32" Nullable="false" />
+          <Property Name="Adet" Type="Int32" Nullable="false" />
+          <Property Name="OnaylandiMi" Type="Boolean" Nullable="false" />
+          <Property Name="GorulduMu" Type="Boolean" Nullable="false" />
+          <Property Name="Teslimat" Type="Boolean" Nullable="false" />
+          <Property Name="IslemTarih" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBLUrun">
+          <Key>
+            <PropertyRef Name="SatirNo" />
+          </Key>
+          <Property Name="SatirNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AltKategori" Type="Int32" Nullable="false" />
+          <Property Name="UrunAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UrunFiyat" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="UrunResim" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UrunDurum" Type="Boolean" Nullable="false" />
+          <Property Name="IslemYapan" Type="Int32" Nullable="false" />
+          <Property Name="IslemTarih" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AlisFiyat" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="TBLUye">
+          <Key>
+            <PropertyRef Name="SatirNo" />
+          </Key>
+          <Property Name="SatirNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cinsiyet" Type="Boolean" Nullable="false" />
+          <Property Name="Cep" Type="String" MaxLength="11" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mahalle" Type="Int32" Nullable="false" />
+          <Property Name="Cadde" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ApartmanNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ApartmanAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DaireNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sifre" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OnayDurum" Type="Boolean" Nullable="false" />
+          <Property Name="UyeDurum" Type="Boolean" Nullable="false" />
+          <Property Name="IslemTarih" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ekmekcimnetEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TBLAltKategori" EntityType="Self.TBLAltKategori" />
+          <EntitySet Name="TBLKategori" EntityType="Self.TBLKategori" />
+          <EntitySet Name="TBLSiparis" EntityType="Self.TBLSiparis" />
+          <EntitySet Name="TBLUrun" EntityType="Self.TBLUrun" />
+          <EntitySet Name="TBLUye" EntityType="Self.TBLUye" />
+          <EntitySet Name="TBLAnlikStok" EntityType="EFEkmekcim.TBLAnlikStok" />
+          <EntitySet Name="TBLFirma" EntityType="EFEkmekcim.TBLFirma" />
+          <EntitySet Name="TBLMahalle" EntityType="EFEkmekcim.TBLMahalle" />
+          <EntitySet Name="TBLOdeme" EntityType="EFEkmekcim.TBLOdeme" />
+          <EntitySet Name="TBLSehir" EntityType="EFEkmekcim.TBLSehir" />
+          <EntitySet Name="TBLUrunAlim" EntityType="EFEkmekcim.TBLUrunAlim" />
+          <EntitySet Name="TBLAnlikBakiye" EntityType="EFEkmekcim.TBLAnlikBakiye" />
+          <EntitySet Name="TBLIletisim" EntityType="EFEkmekcim.TBLIletisim" />
+        </EntityContainer>
+        <EntityType Name="TBLAnlikStok">
+          <Key>
+            <PropertyRef Name="SatirNo" />
+          </Key>
+          <Property Name="SatirNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Urun" Type="Int32" Nullable="false" />
+          <Property Name="Adet" Type="Int32" Nullable="false" />
+          <Property Name="IslemTarih" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBLFirma">
+          <Key>
+            <PropertyRef Name="SatirNo" />
+          </Key>
+          <Property Name="SatirNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirmaAd" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adres" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sehir" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Tel" Type="String" Nullable="false" MaxLength="14" FixedLength="false" Unicode="true" />
+          <Property Name="IslemYapan" Type="Int32" Nullable="false" />
+          <Property Name="IslemTarih" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBLMahalle">
+          <Key>
+            <PropertyRef Name="SatirNo" />
+          </Key>
+          <Property Name="SatirNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sehir" Type="Int32" Nullable="false" />
+          <Property Name="MahalleAd" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBLOdeme">
+          <Key>
+            <PropertyRef Name="SatirNo" />
+          </Key>
+          <Property Name="SatirNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UyeFirma" Type="Int32" Nullable="false" />
+          <Property Name="FisNo" Type="Int32" Nullable="false" />
+          <Property Name="OdemeTip" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="OdemeTarih" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OdemeTutar" Type="Decimal" Nullable="false" Precision="18" Scale="3" />
+          <Property Name="IslemTarih" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IslemYapan" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBLSehir">
+          <Key>
+            <PropertyRef Name="SatirNo" />
+          </Key>
+          <Property Name="SatirNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SehirAd" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBLUrunAlim">
+          <Key>
+            <PropertyRef Name="SatirNo" />
+          </Key>
+          <Property Name="SatirNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FisNo" Type="Int32" Nullable="false" />
+          <Property Name="Firma" Type="Int32" Nullable="false" />
+          <Property Name="Tarih" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Saat" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="OdemeTip" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="AlinanUrun" Type="Int32" Nullable="false" />
+          <Property Name="AlinanMiktar" Type="Int32" Nullable="false" />
+          <Property Name="AFiyat" Type="Decimal" Nullable="false" Precision="18" Scale="3" />
+          <Property Name="NetTutar" Type="Decimal" Nullable="false" Precision="18" Scale="3" />
+          <Property Name="IslemTarih" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IslemYapan" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBLAnlikBakiye">
+          <Key>
+            <PropertyRef Name="SatirNo" />
+          </Key>
+          <Property Name="SatirNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UyeFirma" Type="Int32" Nullable="false" />
+          <Property Name="Bakiye" Type="Decimal" Nullable="false" Precision="18" Scale="3" />
+          <Property Name="IslemTarih" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBLIletisim">
+          <Key>
+            <PropertyRef Name="SatirNo" />
+          </Key>
+          <Property Name="SatirNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Soyad" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mesaj" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IslemTarih" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Okundu" Type="Boolean" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EFEkmekcimStoreContainer" CdmEntityContainer="ekmekcimnetEntities">
+          <EntitySetMapping Name="TBLAltKategori">
+            <EntityTypeMapping TypeName="EFEkmekcim.TBLAltKategori">
+              <MappingFragment StoreEntitySet="TBLAltKategori">
+                <ScalarProperty Name="SatirNo" ColumnName="SatirNo" />
+                <ScalarProperty Name="AltKategoriAd" ColumnName="AltKategoriAd" />
+                <ScalarProperty Name="Kategori" ColumnName="Kategori" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLKategori">
+            <EntityTypeMapping TypeName="EFEkmekcim.TBLKategori">
+              <MappingFragment StoreEntitySet="TBLKategori">
+                <ScalarProperty Name="SatirNo" ColumnName="SatirNo" />
+                <ScalarProperty Name="KategoriAd" ColumnName="KategoriAd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLSiparis">
+            <EntityTypeMapping TypeName="EFEkmekcim.TBLSiparis">
+              <MappingFragment StoreEntitySet="TBLSiparis">
+                <ScalarProperty Name="SatirNo" ColumnName="SatirNo" />
+                <ScalarProperty Name="Uye" ColumnName="Uye" />
+                <ScalarProperty Name="Urun" ColumnName="Urun" />
+                <ScalarProperty Name="Adet" ColumnName="Adet" />
+                <ScalarProperty Name="OnaylandiMi" ColumnName="OnaylandiMi" />
+                <ScalarProperty Name="GorulduMu" ColumnName="GorulduMu" />
+                <ScalarProperty Name="Teslimat" ColumnName="Teslimat" />
+                <ScalarProperty Name="IslemTarih" ColumnName="IslemTarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLUrun">
+            <EntityTypeMapping TypeName="EFEkmekcim.TBLUrun">
+              <MappingFragment StoreEntitySet="TBLUrun">
+                <ScalarProperty Name="AlisFiyat" ColumnName="AlisFiyat" />
+                <ScalarProperty Name="SatirNo" ColumnName="SatirNo" />
+                <ScalarProperty Name="AltKategori" ColumnName="AltKategori" />
+                <ScalarProperty Name="UrunAd" ColumnName="UrunAd" />
+                <ScalarProperty Name="UrunFiyat" ColumnName="UrunFiyat" />
+                <ScalarProperty Name="UrunResim" ColumnName="UrunResim" />
+                <ScalarProperty Name="UrunDurum" ColumnName="UrunDurum" />
+                <ScalarProperty Name="IslemYapan" ColumnName="IslemYapan" />
+                <ScalarProperty Name="IslemTarih" ColumnName="IslemTarih" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLUye">
+            <EntityTypeMapping TypeName="EFEkmekcim.TBLUye">
+              <MappingFragment StoreEntitySet="TBLUye">
+                <ScalarProperty Name="SatirNo" ColumnName="SatirNo" />
+                <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+                <ScalarProperty Name="Cinsiyet" ColumnName="Cinsiyet" />
+                <ScalarProperty Name="Cep" ColumnName="Cep" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Mahalle" ColumnName="Mahalle" />
+                <ScalarProperty Name="Cadde" ColumnName="Cadde" />
+                <ScalarProperty Name="ApartmanNo" ColumnName="ApartmanNo" />
+                <ScalarProperty Name="ApartmanAd" ColumnName="ApartmanAd" />
+                <ScalarProperty Name="DaireNo" ColumnName="DaireNo" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="OnayDurum" ColumnName="OnayDurum" />
+                <ScalarProperty Name="UyeDurum" ColumnName="UyeDurum" />
+                <ScalarProperty Name="IslemTarih" ColumnName="IslemTarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLAnlikStok">
+            <EntityTypeMapping TypeName="EFEkmekcim.TBLAnlikStok">
+              <MappingFragment StoreEntitySet="TBLAnlikStok">
+                <ScalarProperty Name="IslemTarih" ColumnName="IslemTarih" />
+                <ScalarProperty Name="Adet" ColumnName="Adet" />
+                <ScalarProperty Name="Urun" ColumnName="Urun" />
+                <ScalarProperty Name="SatirNo" ColumnName="SatirNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLFirma">
+            <EntityTypeMapping TypeName="EFEkmekcim.TBLFirma">
+              <MappingFragment StoreEntitySet="TBLFirma">
+                <ScalarProperty Name="IslemTarih" ColumnName="IslemTarih" />
+                <ScalarProperty Name="IslemYapan" ColumnName="IslemYapan" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Sehir" ColumnName="Sehir" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="FirmaAd" ColumnName="FirmaAd" />
+                <ScalarProperty Name="SatirNo" ColumnName="SatirNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLMahalle">
+            <EntityTypeMapping TypeName="EFEkmekcim.TBLMahalle">
+              <MappingFragment StoreEntitySet="TBLMahalle">
+                <ScalarProperty Name="MahalleAd" ColumnName="MahalleAd" />
+                <ScalarProperty Name="Sehir" ColumnName="Sehir" />
+                <ScalarProperty Name="SatirNo" ColumnName="SatirNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLOdeme">
+            <EntityTypeMapping TypeName="EFEkmekcim.TBLOdeme">
+              <MappingFragment StoreEntitySet="TBLOdeme">
+                <ScalarProperty Name="IslemYapan" ColumnName="IslemYapan" />
+                <ScalarProperty Name="IslemTarih" ColumnName="IslemTarih" />
+                <ScalarProperty Name="OdemeTutar" ColumnName="OdemeTutar" />
+                <ScalarProperty Name="OdemeTarih" ColumnName="OdemeTarih" />
+                <ScalarProperty Name="OdemeTip" ColumnName="OdemeTip" />
+                <ScalarProperty Name="FisNo" ColumnName="FisNo" />
+                <ScalarProperty Name="UyeFirma" ColumnName="UyeFirma" />
+                <ScalarProperty Name="SatirNo" ColumnName="SatirNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLSehir">
+            <EntityTypeMapping TypeName="EFEkmekcim.TBLSehir">
+              <MappingFragment StoreEntitySet="TBLSehir">
+                <ScalarProperty Name="SehirAd" ColumnName="SehirAd" />
+                <ScalarProperty Name="SatirNo" ColumnName="SatirNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLUrunAlim">
+            <EntityTypeMapping TypeName="EFEkmekcim.TBLUrunAlim">
+              <MappingFragment StoreEntitySet="TBLUrunAlim">
+                <ScalarProperty Name="IslemYapan" ColumnName="IslemYapan" />
+                <ScalarProperty Name="IslemTarih" ColumnName="IslemTarih" />
+                <ScalarProperty Name="NetTutar" ColumnName="NetTutar" />
+                <ScalarProperty Name="AFiyat" ColumnName="AFiyat" />
+                <ScalarProperty Name="AlinanMiktar" ColumnName="AlinanMiktar" />
+                <ScalarProperty Name="AlinanUrun" ColumnName="AlinanUrun" />
+                <ScalarProperty Name="OdemeTip" ColumnName="OdemeTip" />
+                <ScalarProperty Name="Saat" ColumnName="Saat" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Firma" ColumnName="Firma" />
+                <ScalarProperty Name="FisNo" ColumnName="FisNo" />
+                <ScalarProperty Name="SatirNo" ColumnName="SatirNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLAnlikBakiye">
+            <EntityTypeMapping TypeName="EFEkmekcim.TBLAnlikBakiye">
+              <MappingFragment StoreEntitySet="TBLAnlikBakiye">
+                <ScalarProperty Name="IslemTarih" ColumnName="IslemTarih" />
+                <ScalarProperty Name="Bakiye" ColumnName="Bakiye" />
+                <ScalarProperty Name="UyeFirma" ColumnName="UyeFirma" />
+                <ScalarProperty Name="SatirNo" ColumnName="SatirNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLIletisim">
+            <EntityTypeMapping TypeName="EFEkmekcim.TBLIletisim">
+              <MappingFragment StoreEntitySet="TBLIletisim">
+                <ScalarProperty Name="Okundu" ColumnName="Okundu" />
+                <ScalarProperty Name="IslemTarih" ColumnName="IslemTarih" />
+                <ScalarProperty Name="Mesaj" ColumnName="Mesaj" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="SatirNo" ColumnName="SatirNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
